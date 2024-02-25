@@ -23,7 +23,7 @@ func main() {
 		logrus.Info("Error loading .env file")
 	}
 
-	config := dto.Config{DSN: os.Getenv("DSN"), Broker: os.Getenv("BROKER")}
+	config := dto.Config{DSN: os.Getenv("DSN"), SigningSecret: os.Getenv("JWT_SECRET")}
 
 	db, err := gorm.Open(postgres.Open(config.DSN), &gorm.Config{})
 	if err != nil {
